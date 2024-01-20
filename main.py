@@ -33,20 +33,24 @@ class Użytkownicy:
         return
 
 # napisała Katarzyna Kowalska
-# tab_to_sort : tablica którą będziemy sortować
+# tab_to_sort : tablica którą będziemy sortować, nie obchodzi nas jej zawartość
 # key : tablica cyfr zawierających liczby od 0 do 9 po których będziemy sortować
-def counting_sort(tab_to_sort : list, key : list) -> list:
+def counting_sort(tab_to_sort : list, key : list) -> None:
+
     count_array = []
     for i in range(10):
         count_array.append(0)
+
     for elem in key:
         count_array[elem] += 1
     for i in range(1, 10):
         count_array[i] += count_array[i - 1]
+
     sorted_tab = []
     for i in range(len(key)):
         sorted_tab.append(0)
-    for i in range(len(key)):
+
+    for i in range(len(key)-1, -1, -1):
         count_array[key[i]] -= 1
         index = count_array[key[i]]
         sorted_tab[index] = tab_to_sort[i] 
@@ -63,9 +67,12 @@ uzytkownicy = Użytkownicy()
 uzytkownicy.dodaj_uzytkownika(2002, 12, 12, 12, 12, 12)
 uzytkownicy.dodaj_uzytkownika(2002, 12, 12, 12, 50, 12)
 
-tab = [1, 5, 3, 2, 5, 1, 5, 0, 1]
-tab2 = [12, 53, 31, 27, 51, 13, 55, 4, 11]
+tab10 = [1, 5, 3, 2, 5, 1, 5, 0, 1]
+tab1 = [2, 3, 1, 7, 1, 3, 5, 4, 1]
+tabMain = [12, 53, 31, 27, 51, 13, 55, 4, 11]
 
-tab = counting_sort(tab2, tab)
+tabMain = counting_sort(tabMain, tab1)
+tab10 = counting_sort(tab10, tab1)
+tabMain = counting_sort(tabMain, tab10)
 
-print(tab)
+print(tabMain)
