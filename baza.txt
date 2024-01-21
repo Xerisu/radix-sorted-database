@@ -1,0 +1,4 @@
+rok,miesiac,dzien,godzina,minuta,sekunda
+2012,12,30,12,30,30
+2000,12,12,12,12,12
+2000,11,2,2,2,2
